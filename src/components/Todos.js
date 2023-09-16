@@ -22,13 +22,13 @@ const Todos = () => {
           className="mt-4 mx-4 flex justify-between items-center bg-zinc-100  opacity-70  px-4 py-3 rounded "
           key={todo.id}
         >
-          <div className="text-black flex justify-normal text-center">
+          <div className="text-black">
             {todo.text}
           </div>
           {requestedUpdatedId === todo.id ? (
             <>
               <button
-                className="bg-blue-500 rounded-xl p-1 text-white"
+                className="flex justify-end bg-blue-500 rounded-xl p-1 text-white"
                 onClick={() => dispatch(editTodo())}
               >
                 Update
