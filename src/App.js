@@ -1,10 +1,8 @@
-import "./App.css";
 import AddTodo from "./components/AddTodo";
-import Todos from "./components/Todos";
 
 function App() {
   return (
-    <div className="App">
+    <div className="w-1/2 text-center m-auto">
       <AddTodo  />
     </div>
   );

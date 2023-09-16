@@ -6,6 +6,7 @@ import {
   setRequestedUpdateId,
   editTodo,
 } from "../features/todo/todoSlice";
+import DeleteOutlineTwoToneIcon from "@mui/icons-material/DeleteOutlineTwoTone";
 
 const Todos = () => {
   const todos = useSelector((state) => state.todos);
@@ -16,17 +17,18 @@ const Todos = () => {
 
   return (
     <>
-      <div>Todos</div>
       {todos.map((todo) => (
         <li
-          className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-3 rounded"
+          className="mt-4 mx-4 flex justify-between items-center bg-zinc-100  opacity-70  px-4 py-3 rounded "
           key={todo.id}
         >
-          <div className="text-white">{todo.text}</div>
+          <div className="text-black flex justify-normal text-center">
+            {todo.text}
+          </div>
           {requestedUpdatedId === todo.id ? (
             <>
               <button
-                className="bg-blue-500"
+                className="bg-blue-500 rounded-xl p-1 text-white"
                 onClick={() => dispatch(editTodo())}
               >
                 Update
@@ -36,6 +38,7 @@ const Todos = () => {
                   dispatch(setInput(""));
                   dispatch(setRequestedUpdateId());
                 }}
+                className="bg-gray-500 rounded-lg p-1 text-white"
               >
                 Cancel
               </button>
@@ -46,16 +49,13 @@ const Todos = () => {
                 dispatch(setInput(todo.text));
                 dispatch(setRequestedUpdateId(todo.id));
               }}
-              className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-redd-600 rounded-text-md"
+              className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-redd-600 rounded-text-md rounded-xl"
             >
               Edit
             </button>
           )}
-          <button
-            onClick={() => dispatch(removeTodo(todo.id))}
-            className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-redd-600 rounded-text-md"
-          >
-            Delete
+          <button onClick={() => dispatch(removeTodo(todo.id))}>
+            <DeleteOutlineTwoToneIcon />
           </button>
         </li>
       ))}
